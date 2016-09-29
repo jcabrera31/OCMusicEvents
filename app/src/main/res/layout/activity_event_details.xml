@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/eventTitleTextView"
         android:layout_weight="3"
-        android:paddingLeft="5%" />
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
         android:id="@+id/eventDateDayTextView"
         android:layout_weight="0.86"
         android:text="textview"
-        android:paddingLeft="5%" />
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
         android:id="@+id/eventTimeTextView"
         android:layout_weight="1"
         android:text="textview"
-        android:paddingLeft="5%" />
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
         android:id="@+id/eventLocationTextView"
         android:layout_weight="1"
         android:text="textview"
-        android:paddingLeft="5%" />
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
         android:id="@+id/eventAddress1TextView"
         android:layout_weight="1"
         android:text="textview"
-        android:paddingLeft="5%" />
+        android:paddingLeft="10dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -68,5 +68,5 @@
         android:id="@+id/eventAddress2TextView"
         android:layout_weight="1"
         android:text="textview"
-        android:paddingLeft="5%" />
+        android:paddingLeft="10dp" />
 </LinearLayout>
