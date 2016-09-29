@@ -1,29 +1,36 @@
 package edu.orangecoastcollege.cs273.jcabrera31.ocmusicevents;
 
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import static edu.orangecoastcollege.cs273.jcabrera31.ocmusicevents.MusicEvent.details;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class EventListActivity extends ListActivity {
 
     ListView eventListView;
+    Context context = this;
+    ArrayList<MusicEvent> allMusicEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //set the adapter (which binds the listView with the data in the MusicEvent.java
-        //Since the date in is an array, we use an ArrayAdapter:
+        eventListView = (ListView) findViewById(R.id.eventsListView);
+        try{
 
-        //ArrayAdapter(source, style, data)
-        setListAdapter(new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,
-                MusicEvent.titles));
+            allMusicEvents = JSONLoader.loadJSONFromAsset(context);
+        }
+        catch(IOException ex)
+        {
+            Log.e("OC Music Events", "Error loading JSON data" + ex.getMessage());
+        }
+
+        setListAdapter(new MusicEventAdapter(context, R.layout.music_event_list_item, allMusicEvents));
 
         //setContentView(R.layout.activity_event_list);
     }
@@ -32,11 +39,27 @@ public class EventListActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int pos, long id)
     {
-        String eventTitle = MusicEvent.titles[pos];
-        String eventDetail = details[pos];
+
+        MusicEvent clickedEvent = allMusicEvents.get(pos);
+
+        String title = clickedEvent.getTitle();
+        String date = clickedEvent.getDate();
+        String day = clickedEvent.getDay();
+        String time = clickedEvent.getTime();
+        String location = clickedEvent.getLocation();
+        String address1 = clickedEvent.getAddress1();
+        String address2 = clickedEvent.getAddress2();
+
+
         Intent intent = new Intent(this, EventDetailsActivity.class);
-        intent.putExtra("title", eventTitle);
-        intent.putExtra("details", eventDetail);
+        intent.putExtra("title", title);
+        intent.putExtra("date", date);
+        intent.putExtra("day", day);
+        intent.putExtra("time", time);
+        intent.putExtra("location", location);
+        intent.putExtra("address1", address1);
+        intent.putExtra("address2", address2);
+
         startActivity(intent);
 
     }
