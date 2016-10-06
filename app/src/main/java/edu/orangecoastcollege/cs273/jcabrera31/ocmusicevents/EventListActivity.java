@@ -32,11 +32,11 @@ public class EventListActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int pos, long id)
     {
-        String eventTitle = MusicEvent.titles[pos];
-        String eventDetail = details[pos];
+        String title = MusicEvent.titles[pos];
+        String detail = details[pos];
         Intent intent = new Intent(this, EventDetailsActivity.class);
-        intent.putExtra("title", eventTitle);
-        intent.putExtra("details", eventDetail);
+        intent.putExtra("title", title);
+        intent.putExtra("details", detail);
         startActivity(intent);
 
     }
