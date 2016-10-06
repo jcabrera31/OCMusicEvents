@@ -49,7 +49,7 @@ public class EventListActivity extends ListActivity {
         String location = clickedEvent.getLocation();
         String address1 = clickedEvent.getAddress1();
         String address2 = clickedEvent.getAddress2();
-
+        String imageName = clickedEvent.getImageName();
 
         Intent intent = new Intent(this, EventDetailsActivity.class);
         intent.putExtra("title", title);
@@ -59,6 +59,7 @@ public class EventListActivity extends ListActivity {
         intent.putExtra("location", location);
         intent.putExtra("address1", address1);
         intent.putExtra("address2", address2);
+        intent.putExtra("ImageName", imageName);
 
         startActivity(intent);
 
